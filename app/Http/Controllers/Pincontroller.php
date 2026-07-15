@@ -82,11 +82,16 @@ class PinController extends Controller
         if (! $alreadyVibed) {
             $pin->vibes()->create(['user_id' => auth()->id()]);
             $pin->increment('vibe_count');
+            $vibed = true;
+        } else {
+            $pin->vibes()->where('user_id', auth()->id())->delete();
+            $pin->decrement('vibe_count');
+            $vibed = false;
         }
 
         return response()->json([
             'vibe_count' => $pin->fresh()->vibe_count,
-            'vibed'      => true,
+            'vibed'      => $vibed,
         ]);
     }
 

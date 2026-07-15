@@ -101,7 +101,7 @@
     (function () {
         const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
-        // ---------- Vibe toggle ----------
+        // Vibe toggle
         const vibeBtn = document.getElementById('vibe-btn');
         vibeBtn.addEventListener('click', function () {
             const pinId = vibeBtn.dataset.pinId;
@@ -116,13 +116,12 @@
                 .then((res) => res.json())
                 .then((data) => {
                     document.getElementById('vibe-count-label').textContent = data.vibe_count + ' vibes';
-                    if (data.vibed) {
-                        vibeBtn.classList.add('pin-action-btn-active');
-                    }
+                    vibeBtn.classList.toggle('pin-action-btn-active', data.vibed);
+                    vibeBtn.dataset.vibed = data.vibed ? '1' : '0';
                 });
         });
 
-        // ---------- Save dropdown ----------
+        // Save dropdown
         const saveBtn = document.getElementById('save-btn');
         const dropdown = document.getElementById('save-dropdown');
 
