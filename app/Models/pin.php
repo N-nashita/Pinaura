@@ -27,4 +27,13 @@ class pin extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function boards()
+    {
+        return $this->belongsToMany(Board::class);
+    }
+ 
+    public function vibes()
+    {
+        return $this->hasMany(PinVibe::class);
+    }
 }

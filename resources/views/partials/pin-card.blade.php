@@ -1,5 +1,5 @@
 {{-- $pin: title, image_path, category, vibe_tag, vibe_count --}}
-<div class="pin-card">
+<a href="{{ route('pins.show', $pin) }}" class="pin-card">
 
     <img src="{{ $pin->image_path }}" alt="{{ $pin->title }}" loading="lazy">
 
@@ -18,4 +18,4 @@
         <p class="pin-title">{{ $pin->title }}</p>
         <p class="pin-category">{{ $pin->category }}</p>
     </div>
-</div>
+</a>

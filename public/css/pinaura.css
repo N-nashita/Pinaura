@@ -759,3 +759,232 @@ button {
   inset: 0;
   z-index: 1;
 }
+
+/* ---------- Pin detail page ---------- */
+
+.pin-detail {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 800px) {
+  .pin-detail { grid-template-columns: 1fr; }
+}
+
+.pin-detail-image {
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--sand);
+}
+
+.pin-detail-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.pin-detail-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.vibe-stamp-static {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--lilac);
+  border-radius: 999px;
+  padding: 6px 14px 6px 8px;
+}
+
+.vibe-stamp-static .vibe-stamp-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.vibe-stamp-static .vibe-stamp-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink);
+}
+
+.pin-detail-category {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(27, 21, 35, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.pin-detail-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 32px;
+  margin: 0 0 12px;
+  line-height: 1.15;
+}
+
+.pin-detail-description {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(27, 21, 35, 0.75);
+  margin: 0 0 20px;
+}
+
+.pin-detail-creator {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  font-size: 14px;
+  color: rgba(27, 21, 35, 0.7);
+}
+
+.pin-detail-creator-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--sand);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.pin-detail-actions {
+  display: flex;
+  gap: 12px;
+  position: relative;
+}
+
+.pin-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(27, 21, 35, 0.15);
+  background: #fff;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.pin-action-btn:hover { background: var(--sand); }
+
+.pin-action-btn-active {
+  background: var(--coral);
+  border-color: var(--coral);
+  color: #fff;
+}
+
+.pin-action-btn-active:hover { background: var(--coral); opacity: 0.9; }
+
+.pin-action-icon { font-size: 14px; }
+
+.save-wrap { position: relative; }
+
+.save-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 280px;
+  background: #fff;
+  border: 1px solid rgba(27, 21, 35, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 12px 30px rgba(27, 21, 35, 0.12);
+  z-index: 30;
+}
+
+.save-dropdown-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: rgba(27, 21, 35, 0.5);
+  margin: 0 0 8px;
+}
+
+.save-board-option {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 8px 10px;
+  border: none;
+  background: none;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.save-board-option:hover { background: var(--sand); }
+
+.save-dropdown-divider {
+  height: 1px;
+  background: rgba(27, 21, 35, 0.08);
+  margin: 12px 0;
+}
+
+.save-new-board {
+  display: flex;
+  gap: 8px;
+}
+
+.save-new-board .auth-input {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.save-new-board-btn {
+  margin-top: 0;
+  padding: 8px 14px;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.save-dropdown-hint {
+  font-size: 11px;
+  color: rgba(27, 21, 35, 0.4);
+  margin: 12px 0 0;
+}
+
+.save-feedback {
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--moss);
+}
+
+/* ---------- Similar pins ---------- */
+
+.similar-pins-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+}
+
+.similar-pins-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  margin: 0 0 16px;
+  padding: 0 24px;
+}
