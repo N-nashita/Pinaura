@@ -48,7 +48,7 @@
         </nav>
 
         <div class="sidebar-bottom">
-            <a href="#" class="sidebar-account" title="Account">
+            <a href="{{ auth()->check() ? route('profile.show') : route('login') }}" class="sidebar-account" title="Account">
                 {{ auth()->check() ? strtoupper(substr(auth()->user()->name, 0, 1)) : '👤' }}
             </a>
             @auth
@@ -61,6 +61,10 @@
                     </button>
 
                     <div id="settings-menu" class="settings-dropdown" style="display:none;">
+                        <a href="{{ route('profile.edit') }}" class="settings-dropdown-item settings-dropdown-item-neutral">
+                Edit profile
+                        </a>
+                        <div class="settings-dropdown-divider"></div>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <button type="submit" class="settings-dropdown-item">

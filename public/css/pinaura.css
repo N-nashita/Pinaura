@@ -1049,3 +1049,105 @@ button {
 .settings-dropdown-item:hover {
     background: var(--sand);
 }
+
+.settings-dropdown-item-neutral {
+    color: var(--ink);
+}
+
+.settings-dropdown-divider {
+    height: 1px;
+    background: rgba(27, 21, 35, 0.08);
+    margin: 6px 4px;
+}
+
+.settings-page {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 40px 24px;
+}
+
+.settings-page-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 26px;
+    margin: 0 0 24px;
+}
+
+.settings-card {
+    background: #fff;
+    border: 1px solid rgba(27, 21, 35, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+}
+
+/* profile page css */
+.profile-header {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 24px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    text-align: left;
+}
+
+.profile-avatar {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 34px;
+    color: var(--ink);
+    flex-shrink: 0;
+
+    background-image:
+        linear-gradient(var(--canvas), var(--canvas)),
+        linear-gradient(145deg, #da07f7, #fe8502, #fd0b43, #6c33f7, #f017fe);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border: 3px solid transparent;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-name {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 26px;
+    margin: 0;
+}
+
+.profile-email {
+    font-size: 13px;
+    color: rgba(27, 21, 35, 0.5);
+    margin: 0;
+}
+
+.profile-pin-count {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(27, 21, 35, 0.4);
+    margin: 2px 0 0;
+}
+
+.profile-edit-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--coral);
+    font-weight: 600;
+    margin-top: 4px;
+    width: fit-content;
+}
+
+.profile-edit-link:hover {
+    color: #a250ff;
+}

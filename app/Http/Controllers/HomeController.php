@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pin;
+use App\Models\Pin;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -34,10 +34,7 @@ class HomeController extends Controller
                 'next_page_url' => $pins->nextPageUrl(),
             ]);
         }
-        
-        $categories = Pin::where('is_public', true)->distinct()->pluck('category');
-        $vibeTags   = Pin::where('is_public', true)->whereNotNull('vibe_tag')->distinct()->pluck('vibe_tag');
  
-        return view('home', compact('pins', 'categories', 'vibeTags'));
+        return view('home', compact('pins'));
     }
 }

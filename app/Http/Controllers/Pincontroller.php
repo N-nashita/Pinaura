@@ -13,8 +13,6 @@ class PinController extends Controller
     public function create()
     {
         return view('pins.create', [
-            'categories' => $this->categories,
-            'vibeTags'   => $this->vibeTags,
         ]);
     }
 
@@ -70,8 +68,6 @@ class PinController extends Controller
             'similarPins' => $similarPins,
             'userVibed'   => $userVibed,
             'userBoards'  => $userBoards,
-            'categories'  => $this->categories,
-            'vibeTags'    => $this->vibeTags,
         ]);
     }
 

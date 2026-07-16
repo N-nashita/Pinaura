@@ -57,4 +57,14 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function show(Request $request): View
+    {
+        $pins = $request->user()->pins()->latest()->paginate(20);
+
+        return view('profile.show', [
+            'user' => $request->user(),
+            'pins' => $pins,
+        ]);
+    }
 }
