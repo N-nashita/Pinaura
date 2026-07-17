@@ -1,9 +1,15 @@
-{{-- $pin: title, image_path, category, vibe_tag, vibe_count --}}
+{{-- $pin: title, image_path, category, vibe_tag, vibe_count, type, quote_text --}}
 <a href="{{ route('pins.show', $pin) }}" class="pin-card">
 
     <img src="{{ $pin->image_path }}" alt="{{ $pin->title }}" loading="lazy">
 
     <div class="pin-card-overlay"></div>
+
+    @if($pin->type === 'quote')
+        <div class="pin-card-quote-overlay">
+            <p class="pin-card-quote-text">{{ $pin->quote_text }}</p>
+        </div>
+    @endif
 
     @if($pin->vibe_tag)
         <div class="vibe-stamp">

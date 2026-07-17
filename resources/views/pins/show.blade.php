@@ -7,6 +7,11 @@
 
     <div class="pin-detail-image">
         <img src="{{ $pin->image_path }}" alt="{{ $pin->title }}">
+        @if($pin->type === 'quote')
+            <div class="pin-detail-quote-overlay">
+                <p class="pin-detail-quote-text">{{ $pin->quote_text }}</p>
+            </div>
+        @endif
     </div>
 
     <div class="pin-detail-info">

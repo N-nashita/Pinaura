@@ -15,6 +15,8 @@ class pin extends Model
         'description',
         'image_path',
         'category',
+        'type',
+        'quote_text',
         'vibe_tag',
         'is_public',
         'vibe_count',

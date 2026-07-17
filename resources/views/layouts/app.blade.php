@@ -17,7 +17,7 @@
         <a href="{{ route('home') }}" class="sidebar-logo">p</a>
 
         <nav class="sidebar-nav">
-            <a href="{{ route('home') }}" class="sidebar-link active" title="Home">
+            <a href="{{ route('home') }}" class="sidebar-link {{ request()->routeIs('home') ? 'active' : '' }}" title="Home">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     
                      <path stroke-linecap="round" stroke-linejoin="round" 
@@ -34,13 +34,13 @@
                 </svg>
             </a>
 
-            <a href="{{ route('pins.create') }}" class="sidebar-link" title="Create">
+            <a href="{{ route('pins.create') }}" class="sidebar-link {{ request()->routeIs('pins.create') ? 'active' : '' }}" title="Create">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" d="M12 5v14M5 12h14"/>
                 </svg>
             </a>
 
-            <a href="#" class="sidebar-link" title="Design/boards">
+            <a href="{{ route('quote-card.create') }}" class="sidebar-link {{ request()->routeIs('quote-card.*') ? 'active' : '' }}" title="Design/boards">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 2l3.5 7 7.5 1-5.5 5.2L18.5 22 12 18l-6.5 4 1-6.8L1 10l7.5-1z"/>
                 </svg>

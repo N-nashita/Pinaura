@@ -21,11 +21,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer(['partials.filter-bar', 'pins.create'], function ($view) {
-        $view->with([
-                'categories' => Pin::where('is_public', true)->distinct()->pluck('category'),
-                'vibeTags'   => Pin::where('is_public', true)->whereNotNull('vibe_tag')->distinct()->pluck('vibe_tag'),
-            ]);
-        });
+        View::composer('partials.filter-bar', function ($view) {
+            $view->with([
+            'categories' => Pin::where('is_public', true)->distinct()->pluck('category'),
+            'vibeTags'   => Pin::where('is_public', true)->whereNotNull('vibe_tag')->distinct()->pluck('vibe_tag'),
+        ]);
+    });
     }
 }
