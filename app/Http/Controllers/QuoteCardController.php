@@ -16,7 +16,7 @@ class QuoteCardController extends Controller
     {
         $data = $request->validate([
             'quote_text' => ['required', 'string', 'max:500'],
-            'image_path' => ['required', 'url'],
+            'image_path' => ['required', 'string', 'max:255'],
             'is_public'  => ['nullable', 'boolean'],
         ]);
 

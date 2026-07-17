@@ -115,4 +115,53 @@ class PinController extends Controller
             'board_name' => $board->name,
         ]);
     }
+
+    public function edit(Pin $pin)
+    {
+        if ($pin->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        return view('pins.edit', [
+            'pin' => $pin,
+            'categories' => $this->categories,
+            'vibeTags'   => $this->vibeTags,
+        ]);
+    }
+
+    public function update(Request $request, Pin $pin)
+    {
+        if ($pin->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $data = $request->validate([
+            'title'       => ['required', 'string', 'max:255'],
+            'description' => ['nullable', 'string', 'max:2000'],
+            'category'    => ['required', 'string', 'in:' . implode(',', $this->categories)],
+            'vibe_tag'    => ['nullable', 'string', 'in:' . implode(',', $this->vibeTags)],
+            'is_public'   => ['nullable', 'boolean'],
+        ]);
+
+        $pin->update([
+            'title'       => $data['title'],
+            'description' => $data['description'] ?? null,
+            'category'    => $data['category'],
+            'vibe_tag'    => $data['vibe_tag'] ?? null,
+            'is_public'   => $request->boolean('is_public', true),
+        ]);
+
+        return redirect()->route('pins.show', $pin)->with('status', 'Pin updated!');
+    }
+
+    public function destroy(Pin $pin)
+    {
+        if ($pin->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $pin->delete();
+
+        return redirect()->route('profile.show')->with('status', 'Pin deleted.');
+    }
 }

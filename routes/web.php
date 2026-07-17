@@ -5,6 +5,7 @@ use App\Http\Controllers\PinController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuoteCardController;
 use App\Http\Controllers\UnsplashController;
+use App\Http\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -16,10 +17,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/pins', [PinController::class, 'store'])->name('pins.store');
     Route::post('/pins/{pin}/vibe', [PinController::class, 'vibe'])->name('pins.vibe');
     Route::post('/pins/{pin}/save', [PinController::class, 'save'])->name('pins.save');
+    Route::get('/pins/{pin}/edit', [PinController::class, 'edit'])->name('pins.edit');
+    Route::put('/pins/{pin}', [PinController::class, 'update'])->name('pins.update');
+    Route::delete('/pins/{pin}', [PinController::class, 'destroy'])->name('pins.destroy');
 
     Route::get('/design/unsplash-search', [UnsplashController::class, 'search'])->name('unsplash.search');
     Route::get('/design/quote-card', [QuoteCardController::class, 'create'])->name('quote-card.create');
     Route::post('/design/quote-card', [QuoteCardController::class, 'store'])->name('quote-card.store');
+
+    Route::get('/design/random-quote', [QuoteController::class, 'random'])->name('quotes.random');
 
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
 

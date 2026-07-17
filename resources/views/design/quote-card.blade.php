@@ -12,15 +12,19 @@
             @csrf
 
             <label for="quote_text" class="auth-label">your quote</label>
-            <textarea
-                id="quote_text"
-                name="quote_text"
-                rows="5"
-                required
-                maxlength="500"
-                class="auth-input create-textarea"
-                placeholder="type something worth remembering..."
-            >{{ old('quote_text') }}</textarea>
+            <div class="quote-input-row">
+                <textarea
+                    id="quote_text"
+                    name="quote_text"
+                    rows="5"
+                    required
+                    maxlength="500"
+                    class="auth-input create-textarea"
+                    placeholder="type something worth remembering..."
+                >{{ old('quote_text') }}</textarea>
+            </div>
+
+            <button type="button" id="generate-quote-btn" class="generate-quote-btn">✦ Generate a Quote for Me</button>
 
             @error('quote_text')
                 <p class="auth-error"><span>{{ $message }}</span></p>
@@ -104,5 +108,29 @@
                 resultsBox.innerHTML = '<p class="unsplash-loading">something went wrong — try again</p>';
             });
     });
+
+    document.getElementById('generate-quote-btn').addEventListener('click', function () {
+        const textarea = document.getElementById('quote_text');
+        const preview = document.getElementById('quote-preview-text');
+
+        textarea.disabled = true;
+        textarea.placeholder = 'fetching a quote...';
+
+        fetch(`{{ route('quotes.random') }}`, {
+            headers: { 'X-CSRF-TOKEN': csrfToken },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                const quoteText = `"${data.content}" — ${data.author}`;
+                textarea.value = quoteText;
+                preview.textContent = quoteText;
+            })
+            .catch(() => {
+                textarea.placeholder = 'couldn\'t fetch a quote — try again or write your own';
+            })
+            .finally(() => {
+                textarea.disabled = false;
+            });
+    });   
 </script>
 @endsection

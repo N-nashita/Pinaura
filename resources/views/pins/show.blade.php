@@ -83,6 +83,14 @@
                     </div>
                 @endauth
             </div>
+            @auth
+                @if($pin->user_id === auth()->id())
+                    <a href="{{ route('pins.edit', $pin) }}" class="pin-action-btn">
+                        <span class="pin-action-icon">✎</span>
+                        <span>edit</span>
+                    </a>
+                @endif
+            @endauth
         </div>
 
         <p id="save-feedback" class="save-feedback" style="display:none;"></p>
