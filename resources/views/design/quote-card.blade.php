@@ -45,6 +45,7 @@
             @enderror
 
             <label class="auth-checkbox-row">
+                <input type="hidden" name="is_public" value="0">
                 <input type="checkbox" name="is_public" value="1" checked>
                 make this public
             </label>

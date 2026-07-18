@@ -5,7 +5,11 @@
 @section('content')
 <div class="profile-header">
     <div class="profile-avatar">
-        {{ strtoupper(substr($user->name, 0, 1)) }}
+        @if($user->avatarUrl())
+            <img src="{{ $user->avatarUrl() }}" alt="{{ $user->name }}" class="profile-avatar-img">
+        @else
+            {{ strtoupper(substr($user->name, 0, 1)) }}
+        @endif
     </div>
     <div class="profile-info">
         <h1 class="profile-name">{{ $user->name }}</h1>

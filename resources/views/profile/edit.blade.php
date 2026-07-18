@@ -7,6 +7,10 @@
     <h2 class="settings-page-title">Profile</h2>
 
     <div class="settings-card">
+        @include('profile.partials.update-avatar-form')
+    </div>
+    
+    <div class="settings-card">
         @include('profile.partials.update-profile-information-form')
     </div>
 
@@ -17,5 +21,6 @@
     <div class="settings-card">
         @include('profile.partials.delete-user-form')
     </div>
+
 </div>
 @endsection

@@ -34,7 +34,13 @@
 
         @if($pin->user)
             <div class="pin-detail-creator">
-                <span class="pin-detail-creator-avatar">{{ strtoupper(substr($pin->user->name, 0, 1)) }}</span>
+                <div class="pin-detail-creator-avatar">
+                    @if($pin->user->avatarUrl())
+                        <img src="{{ $pin->user->avatarUrl() }}" alt="{{ $pin->user->name }}" class="pin-detail-creator-avatar-img">
+                    @else
+                        {{ strtoupper(substr($pin->user->name, 0, 1)) }}
+                    @endif
+                </div>
                 <span>{{ $pin->user->name }}</span>
             </div>
         @endif

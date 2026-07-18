@@ -22,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar_style',
     ];
 
     /**
@@ -53,5 +54,13 @@ class User extends Authenticatable
     public function pins()
     {
         return $this->hasMany(Pin::class);
+    }
+    public function avatarUrl(): ?string
+    {
+        if (! $this->avatar_style) {
+            return null; // means: use initials avatar instead
+        }
+
+        return 'https://api.dicebear.com/9.x/' . $this->avatar_style . '/svg?seed=' . urlencode($this->email);
     }
 }

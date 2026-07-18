@@ -28,7 +28,7 @@ class HomeController extends Controller
             ->paginate(24)
             ->withQueryString();
  
-        if ($request->ajax()) {
+        if ($request->ajax() || $request->wantsJson()) {
             return response()->json([
                 'html' => view('partials.pins-grid-items', compact('pins'))->render(),
                 'next_page_url' => $pins->nextPageUrl(),

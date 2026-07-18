@@ -58,6 +58,7 @@
                 </select>
 
                 <label class="auth-checkbox-row create-visibility">
+                    <input type="hidden" name="is_public" value="0">
                     <input type="checkbox" name="is_public" value="1" checked>
                     <span>make this pin public</span>
                 </label>

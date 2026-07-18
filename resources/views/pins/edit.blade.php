@@ -44,6 +44,7 @@
             </select>
 
             <label class="auth-checkbox-row">
+                <input type="hidden" name="is_public" value="0">
                 <input type="checkbox" name="is_public" value="1" {{ old('is_public', $pin->is_public) ? 'checked' : '' }}>
                 make this public
             </label>

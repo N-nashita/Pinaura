@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class PinController extends Controller
 {
-    private array $categories = ['travel', 'food', 'art', 'fashion', 'tech', 'fitness', 'study', 'home', 'nature'];
-    private array $vibeTags   = ['cozy', 'energetic', 'nostalgic', 'calm', 'bold', 'dreamy'];
+    private array $categories = ['travel', 'food', 'art', 'fashion', 'tech', 'hobby', 'study', 'home', 'nature', 'sky ', 'entertainment', 'books', 'other'];
+    private array $vibeTags   = ['cozy', 'energetic', 'nostalgic', 'calm', 'bold', 'dreamy', 'whimsical', 'moody ', 'mysterious', 'adventurous', 'rustic', 'retro'];
 
     public function create()
     {

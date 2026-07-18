@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PinController;
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\QuoteCardController;
 use App\Http\Controllers\UnsplashController;
@@ -21,6 +22,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/pins/{pin}', [PinController::class, 'update'])->name('pins.update');
     Route::delete('/pins/{pin}', [PinController::class, 'destroy'])->name('pins.destroy');
 
+    Route::get('/boards', [BoardController::class, 'index'])->name('boards.index');
+    Route::get('/boards/{board}', [BoardController::class, 'show'])->name('boards.show');
+
     Route::get('/design/unsplash-search', [UnsplashController::class, 'search'])->name('unsplash.search');
     Route::get('/design/quote-card', [QuoteCardController::class, 'create'])->name('quote-card.create');
     Route::post('/design/quote-card', [QuoteCardController::class, 'store'])->name('quote-card.store');
@@ -32,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/settings', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/settings', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::patch('/settings/avatar', [ProfileController::class, 'updateAvatar'])->name('avatar.update');
 });
 
 require __DIR__.'/auth.php';

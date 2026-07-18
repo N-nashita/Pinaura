@@ -8,6 +8,22 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Fascinate+Inline&family=Great+Vibes&family=Moon+Dance&family=Ole&family=Parisienne&family=Pinyon+Script&family=Sarina&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Allura&family=Fascinate+Inline&family=Great+Vibes&family=Moon+Dance&family=Oi&family=Ole&family=Parisienne&family=Pinyon+Script&family=Sarina&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Akronim&family=Alex+Brush&family=Allura&family=Fascinate+Inline&family=Great+Vibes&family=Moon+Dance&family=Oi&family=Ole&family=Parisienne&family=Pinyon+Script&family=Sarina&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Akronim&family=Alex+Brush&family=Allura&family=Fascinate+Inline&family=Great+Vibes&family=Joti+One&family=Moon+Dance&family=Oi&family=Ole&family=Parisienne&family=Pinyon+Script&family=Rampart+One&family=Sarina&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ asset('css/pinaura.css') }}">
 </head>
@@ -25,7 +41,7 @@
                 </svg>
             </a>
 
-            <a href="#" class="sidebar-link" title="Grid">
+            <a href="{{ route('boards.index') }}" class="sidebar-link {{ request()->routeIs('boards.index') ? 'active' : '' }}" title="Grid">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="7" height="7" rx="1.5"/>
                     <rect x="14" y="3" width="7" height="7" rx="1.5"/>
@@ -49,7 +65,11 @@
 
         <div class="sidebar-bottom">
             <a href="{{ auth()->check() ? route('profile.show') : route('login') }}" class="sidebar-account" title="Account">
-                {{ auth()->check() ? strtoupper(substr(auth()->user()->name, 0, 1)) : '👤' }}
+                @if(auth()->check() && auth()->user()->avatarUrl())
+                    <img src="{{ auth()->user()->avatarUrl() }}" alt="{{ auth()->user()->name }}" class="sidebar-account-img">
+                @else
+                    {{ auth()->check() ? strtoupper(substr(auth()->user()->name, 0, 1)) : '👤' }}
+                @endif
             </a>
             @auth
                 <div class="settings-wrap">

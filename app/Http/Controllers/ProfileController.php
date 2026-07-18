@@ -67,4 +67,17 @@ class ProfileController extends Controller
             'pins' => $pins,
         ]);
     }
+
+    public function updateAvatar(Request $request): RedirectResponse
+    {
+        $data = $request->validate([
+            'avatar_style' => ['nullable', 'string', 'in:thumbs,bottts,adventurer,shapes,micah'],
+        ]);
+
+        $request->user()->update([
+            'avatar_style' => $data['avatar_style'] ?: null,
+        ]);
+
+        return Redirect::route('profile.edit')->with('status', 'avatar-updated');
+    }
 }
